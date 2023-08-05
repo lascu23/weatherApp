@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="Api">
+        <form class='Input' action="/getCity" method="post">
+            <input type="text" placeholder='enter a city' name="inputCity"/>
+            <button type='submit' ><img src="/magnifying-glass.png" alt="nu s-a gasit poza"></img></button>
+        </form>
+        <% if(locals.error1) {%>
+            <p style="color: red; font-weight: 600; font-size: 20px;"><%= error1 %></p>
+        <% } %>
+        <% if(locals.data) {%>
+            <% if (data.main === 'Clouds') { %>
+                <div ><img src="/clouds.png" alt="eroare poza" class="poza"></div>
+            <% }else if (data.main === 'Drizzle') { %>
+                <div><img src="/drizzle.png" alt="eroare poza" class="poza"></div>
+            <% }else if (data.main === 'Rain') { %>
+                <div><img src="/rain.png" alt="eroare poza" class="poza"></div>
+            <% }else if (data.main === 'Snow') { %>
+                <div><img src="/snow.png" alt="eroare poza" class="poza"></div>
+            <% }else if (data.main === 'Thunderstorm') { %>
+                <div><img src="/thunderstorm.png" alt="eroare poza" class="poza"></div>
+            <% }else { %>
+                <div><img src="/mist.png" alt="eroare poza" class="poza"></div>
+            <% } %>
+            <div ><p class="temp"><%= data.temp %>°C</p></div>
+            <div ><p class="oras"><%= data.city %></p></div>
+            <div class="containerPoze">
+                <div class="centreaza"><img src="/humidity.png" alt="eroare poza" style="width: 50px; height: 50px;"><span><%= data.humidity %>%</span></div>
+                <div class="centreaza"><img src="/winds-weather-symbol.png" alt="eroare poza" style="width: 50px; height: 50px;"><span><%= data.wind %> km/h</span></div>
+             </div>
+        <% } %>
+    </div>
+</body>
+</html>
