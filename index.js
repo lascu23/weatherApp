@@ -4,7 +4,7 @@ import bodyParser from "body-parser"
 
 const app = express()
 
-const apiKey = "9e2cdd8f4a024ee2fd8093fd06f46fd7";
+const apiKey = "-";
 let lat, lon;
 
 app.set('view engine', 'ejs'); 
